@@ -79,7 +79,8 @@ const Quotes = () => {
 		"I am not afraid... I was born to do this. - Joan of Arc",
 		"Believe you can and you’re halfway there. - Theodore Roosevelt",
 	]
-	const workQuotes = quotes.map((el) => {
+	// format the quotes in order to use them as we like
+	const formattedQuotes = quotes.map((el) => {
 		var text = el.split("-")[0]
 		const author = el.split("-")[1]
 		return {
@@ -87,9 +88,12 @@ const Quotes = () => {
 			author,
 		}
 	})
+	// every time we click next button this useEffect works to change the current quote
 	useEffect(() => {
 		setSelectedQuote(
-			workQuotes[Math.floor(Math.random() * workQuotes.length - 1) + 1]
+			formattedQuotes[
+				Math.floor(Math.random() * formattedQuotes.length - 1) + 1
+			]
 		)
 		setColor(
 			`rgb(${Math.floor(Math.random() * 255) + 1},${
@@ -98,8 +102,7 @@ const Quotes = () => {
 		)
 	}, [change])
 
-	console.log(workQuotes)
-
+	// start rendering
 	return (
 		<Main>
 			<TitleContainer>
